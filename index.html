@@ -35,23 +35,44 @@
     }
 
     nav {
-      background-color: #166534;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 15px 0;
-    }
+  background-color: #166534;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 15px;
+  text-align: center;
+}
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  background-color: #15803d;
+}
 
-    nav a:hover {
-      color: #d9f99d;
-    }
+nav a:hover {
+  background-color: #2e7d32;
+  color: #d9f99d;
+}
+
+/* RESPONSIVO: em telas pequenas os links ficam empilhados ou centralizados com boa margem */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav a {
+    width: 90%;
+    font-size: 1.1rem;
+  }
+}
+
 
     .parallax {
   background-image: url(https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg);
