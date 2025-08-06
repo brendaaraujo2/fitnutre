@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FitNutre | Seu plano alimentar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="favicon-16x16.png" href="assets/imagens/favicon-16x16.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: #f0fdf4;
+    }
+
+    header {
+      background: #14532d;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 1.1em;
+    }
+
+    nav {
+      background-color: #166534;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #d9f99d;
+    }
+
+    .parallax {
+      background-image: url(https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg);
+      height: 400px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .intro {
+      text-align: center;
+      color: #14532d;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background-color: #0f5025;
+      border: 2px solid  #0d0e0d;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      background-color: #2c6440;
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: #f2f3f2;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .form-section {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    input, select, button {
+      padding: 12px;
+      margin: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1em;
+    }
+
+    button {
+      background-color: #15803d;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #166534;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      background-color: #14532d;
+      color: white;
+      margin-top: 50px;
+    }
+    .form-container {
+  background-color: #f1fdf2;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container input,
+.form-container select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.form-container button {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #3c8f40;
+}
+
+/* Botões de contato fixos */
+.contact-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1000;
+}
+ .video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* proporção 16:9 */
+  height: 0;
+  overflow: hidden;
+  margin: 2rem auto;
+  max-width: 90%;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.3); /* rosa suave */
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 20px;
+}
+
+  </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+  <header>
+    <h1>FitNutre</h1>
+    <p>Seu plano alimentar personalizado, fácil e inteligente para uma vida mais saudável.</p>
+   
+  </header>
+
+  <nav>
+    <a href="artigo1.html">Alimentação Saudável</a>
+    <a href="artigo2.html">Benefícios da Atividade Física</a>
+    <a href="artigo3.html">O Poder do Autocuidado</a> 
+    <a href="#" id="faça-minha-dieta">Faça minha dieta</a>
+  </nav>
+
+  <div class="parallax"></div>
+
+  <div class="container">
+    <section class="intro">
+      <h2>Descubra o melhor plano alimentar para você</h2>
+      <p>Nosso sistema usa dados como IMC, TMB e seus objetivos para criar um plano sob medida. É rápido, gratuito e personalizado!
+        Preencha o formulário abaixo e receba seu plano alimentar em segundos.</p>
+      </p>
+    </section>
+</section>
+
+<section class="video-youtube">
+  <div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/9q7WaQqtWK4?si=KVp29xnzkvRbrb7J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+    <div class="cards">
+      <div class="card">
+        <h3>🔍 Avaliação Inteligente</h3>
+        <p>Com base em seus dados, oferecemos sugestões ajustadas ao seu perfil nutricional.</p>
+      </div>
+      <div class="card">
+        <h3>📊 Cálculos Precisos</h3>
+        <p>IMC, gasto calórico diário e recomendações geradas em segundos.</p>
+      </div>
+      <div class="card">
+        <h3>🤖 Ajuda com IA</h3>
+        <p>Copie seus dados e receba um plano alimentar completo pelo ChatGPT.</p>
+      </div>
+    </div>
+
+     <section class="form-section" style="display: flex; justify-content: center; align-items: center; padding: 40px;">
+  <div style="background-color: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); max-width: 500px; width: 100%;">
+    <h2 style="text-align: center; color: #2e7d32;">Vamos começar?</h2>
+    <form id="formulario" style="display: flex; flex-direction: column; gap: 12px;">
+  <input type="text" name="nome" placeholder="Seu nome" required style="border: 1px solid #ccc; border-radius: 6px; padding: 8px; width: 100%;" />
+  <input type="number" name="idade" placeholder="Idade" required style="border: 1px solid #ccc; border-radius: 6px; padding: 8px; width: 100%;" />
+  <input type="number" name="peso" placeholder="Peso (kg)" required style="border: 1px solid #ccc; border-radius: 6px; padding: 8px; width: 100%;" />
+  <input type="number" name="altura" placeholder="Altura (cm)" required style="border: 1px solid #ccc; border-radius: 6px; padding: 8px; width: 100%;" />
+  <select name="sexo" required style="border: 1px solid #ccc; border-radius: 6px; padding: 8px; width: 100%;">
+    <option value="">Sexo</option>
+    <option value="feminino">Feminino</option>
+    <option value="masculino">Masculino</option>
+  </select>
+  <select name="atividade" required style="border: 1px solid #ccc; border-radius: 6px; padding: 8px; width: 100%;">
+    <option value="">Nível de atividade física</option>
+    <option value="sedentario">Sedentário</option>
+    <option value="leve">Leve (1-2x semana)</option>
+    <option value="moderado">Moderado (3-4x semana)</option>
+    <option value="intenso">Intenso (5-6x semana)</option>
+  </select>
+  <select name="objetivo" required style="border: 1px solid #ccc; border-radius: 6px; padding: 8px; width: 100%;">
+    <option value="">Objetivo</option>
+    <option value="emagrecimento">Emagrecimento</option>
+    <option value="ganho de massa">Ganho de massa</option>
+    <option value="manutenção">Manutenção</option>
+  </select>
+
+  <button type="submit" style="background-color: #4caf50; color: white; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; width: 100%; transition: background 0.3s ease;">Gerar Plano</button>
+  
+</form>
+
+</section>
+
+  </div>
+
+ 
+
+  <div class="contact-buttons">
+  <a href="https://wa.me/5511944921359" target="_blank" title="WhatsApp">
+    <img src="assets/imagens/whatsapp.png" alt="WhatsApp" width="40" height="40" />
+  </a>
+  <a href="mailto:brendaaraujocampos@gmail.com" title="Gmail">
+    <img src="assets/imagens/gmail.png" alt="Email" width="40" height="40" />
+  </a>
+  <a href="tel:+5511944921359" title="Ligar">
+    <img src="assets/imagens/fone.png" alt="Telefone" width="40" height="40" />
+  </a>
+  <script>
+  document.getElementById('faça-minha-dieta').addEventListener('click', function(event) {
+    event.preventDefault(); // evita o comportamento padrão do link
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  });
+</script>
+</div>
+<script>
+  document.getElementById("formulario").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    localStorage.setItem("nome", this.nome.value);
+    localStorage.setItem("idade", this.idade.value);
+    localStorage.setItem("peso", this.peso.value);
+    localStorage.setItem("altura", this.altura.value);
+    localStorage.setItem("sexo", this.sexo.value);
+    localStorage.setItem("objetivo", this.objetivo.value);
+    localStorage.setItem("atividade", this.atividade.value);
+
+    // Aqui você pode calcular IMC e TMB
+    const peso = parseFloat(this.peso.value);
+    const altura = parseFloat(this.altura.value) / 100;
+    const idade = parseInt(this.idade.value);
+    const sexo = this.sexo.value;
+    const atividade = this.atividade.value;
+
+    const imc = (peso / (altura * altura)).toFixed(2);
+    localStorage.setItem("imc", imc);
+
+    let tmb = 0;
+    if (sexo === "feminino") {
+      tmb = 655 + (9.6 * peso) + (1.8 * altura * 100) - (4.7 * idade);
+    } else {
+      tmb = 66 + (13.7 * peso) + (5 * altura * 100) - (6.8 * idade);
+    }
+
+    // Fator de atividade
+    const fatores = {
+      sedentario: 1.2,
+      leve: 1.375,
+      moderado: 1.55,
+      intenso: 1.725
+    };
+
+    const fator = fatores[atividade] || 1.2;
+    const tmbTotal = (tmb * fator).toFixed(0);
+    localStorage.setItem("tmb", tmbTotal);
+
+    // Agora redireciona
+    window.location.href = "resultado.html";
+  });
+</script>
+ <footer>
+    Criado por Brenda Campos; &copy; 2025 FitNutre. Todos os direitos reservados.
+  </footer>
+</body>
+</html>

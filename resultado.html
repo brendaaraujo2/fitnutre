@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seu Plano Alimentar | FitNutre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="assets/imagens/favicon-16x16.png">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-image: url(https://images.pexels.com/photos/12499374/pexels-photo-12499374.jpeg);
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 5vh auto;
+      padding: 30px;
+      background: #166534;
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      box-shadow: 0 0 40px #1665347a;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      margin-bottom: 20px;
+    }
+
+    .resultado-box {
+      padding: 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      animation: fadeIn 2s ease-in-out;
+      border: 2px solid #000;
+    }
+
+    .resultado-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      margin-bottom: 8px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 5px;
+      border-bottom: 1px solid #000;
+    }
+
+    .resultado-value {
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #resultsContainer {
+      display: none;
+    }
+
+    /* Botão */
+    #showResultsBtn {
+      background-color: #3b5323;
+      color: white;
+      font-weight: bold;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 20px;
+      box-shadow: 0 0 15px #3b5323;
+      transition: transform 0.3s ease;
+      margin: 100px auto;
+      display: block;
+    }
+    #showResultsBtn:hover {
+      transform: scale(1.05);
+    }
+
+    .botao-destaque {
+      margin-top: 25px;
+      background: white;
+      color: black;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      padding: 16px;
+      width: 100%;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      display: none; /* Inicialmente escondido */
+    }
+
+    .botao-destaque:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    .botao-destaque:active {
+      transform: scale(0.98);
+    }
+    a.back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #7aba3c;
+      color: white;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+    a.back:hover {
+      background: #5f8d24;
+    }
+  </style>
+</head>
+<body>
+  <button id="showResultsBtn">Mostre-me meus resultados</button>
+
+  <div id="resultsContainer" style="display:none">
+    <div class="container">
+      <h1>Seus resultados para o seu plano personalizado</h1>
+      <div class="resultado-box" id="resultado">
+        <!-- Resultados serão exibidos aqui -->
+      </div>
+      <button id="btnIA" class="botao-destaque">✨ Pedir dieta personalizada com IA</button>
+    </div>
+  </div>
+
+  <audio id="bg-music" src="assets/1 - Talkz Music - Pink Floyd Another Brick In The Wall (Talkz Remix).mp3" loop></audio>
+
+  <script>
+    const btn = document.getElementById('showResultsBtn');
+    const resultsContainer = document.getElementById('resultsContainer');
+    const resultadoDiv = document.getElementById('resultado');
+    const audio = document.getElementById('bg-music');
+    const btnIA = document.getElementById('btnIA');
+
+    btn.addEventListener('click', () => {
+      const nome = localStorage.getItem("nome") || "Usuário";
+      const idade = localStorage.getItem("idade") || "não informado";
+      const peso = localStorage.getItem("peso") || "não informado";
+      const altura = localStorage.getItem("altura") || "não informado";
+      const objetivo = localStorage.getItem("objetivo") || "não informado";
+      const imc = localStorage.getItem("imc") || "não informado";
+      const tmb = localStorage.getItem("tmb") || "não informado";
+
+      resultadoDiv.innerHTML = `
+        <div class="resultado-item">
+          <span>Nome:</span>
+          <span class="resultado-value">${nome}</span>
+        </div>
+        <div class="resultado-item">
+          <span>Idade:</span>
+          <span class="resultado-value">${idade} anos</span>
+        </div>
+        <div class="resultado-item">
+          <span>Peso:</span>
+          <span class="resultado-value">${peso} kg</span>
+        </div>
+        <div class="resultado-item">
+          <span>Altura:</span>
+          <span class="resultado-value">${altura} m</span>
+        </div>
+        <div class="resultado-item">
+          <span>Objetivo:</span>
+          <span class="resultado-value">${objetivo}</span>
+        </div>
+        <div class="resultado-item">
+          <span>IMC:</span>
+          <span class="resultado-value">${imc}</span>
+        </div>
+        <div class="resultado-item">
+          <span>Gasto calórico diário (TMB):</span>
+          <span class="resultado-value">${tmb} kcal</span>
+        </div>
+      `;
+
+      resultsContainer.style.display = 'block';
+      audio.play().catch(e => {
+        console.log("Erro ao tentar tocar música:", e);
+      });
+
+      btn.style.display = 'none';
+      btnIA.style.display = 'block'; // Exibe o botão IA
+    });
+
+    btnIA.addEventListener("click", () => {
+      const nome = localStorage.getItem("nome") || "Usuário";
+      const idade = localStorage.getItem("idade") || "não informado";
+      const peso = localStorage.getItem("peso") || "não informado";
+      const altura = localStorage.getItem("altura") || "não informado";
+      const sexo = localStorage.getItem("sexo") || "não informado";
+      const objetivo = localStorage.getItem("objetivo") || "não informado";
+      const atividade = localStorage.getItem("atividade") || "não informado";
+      const imc = localStorage.getItem("imc") || "não informado";
+      const tmb = localStorage.getItem("tmb") || "não informado";
+
+      const mensagem = `
+Olá, meu nome é ${nome}.
+Tenho ${idade} anos, peso ${peso} kg, altura ${altura} m, e sou do sexo ${sexo}.
+Meu objetivo é ${objetivo} e meu nível de atividade física é ${atividade}.
+Meu IMC atual é ${imc} e meu gasto calórico basal (TMB) é aproximadamente ${tmb} kcal por dia.
+Com base nesses dados, por favor, gere uma dieta personalizada, balanceada e adequada para atingir meu objetivo da melhor forma possível.
+Obrigado!
+      `.trim();
+
+      navigator.clipboard.writeText(mensagem).then(() => {
+        alert("Mensagem copiada! Agora cole no ChatGPT.");
+        window.open("https://chat.openai.com/chat", "_blank");
+      }).catch(() => {
+        alert("Erro ao copiar a mensagem. Por favor, copie manualmente.");
+        window.open("https://chat.openai.com/chat", "_blank");
+      });
+    });
+
+    btnIA.addEventListener("mouseover", () => {
+      btnIA.style.transform = "scale(1.05)";
+    });
+    btnIA.addEventListener("mouseout", () => {
+      btnIA.style.transform = "scale(1)";
+    });
+  </script>
+   
+  </div> 
+  <a href="index.html" class="back">← Voltar para o início</a>
+</body>
+</html>
